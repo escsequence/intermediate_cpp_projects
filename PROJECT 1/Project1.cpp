@@ -53,16 +53,16 @@ int main() {
   towTrucks[3] = TowTruck("Colton Johnson", Point(7, 7));
 
   bool programActive = true;
+  char option;
+  Point userEnteredPoint = getPointFromUser();
+  addPointToClosestTowTruck(towTrucks, userEnteredPoint);
 
   while(programActive) {
-    char option;
-    Point userEnteredPoint = getPointFromUser();
-    addPointToClosestTowTruck(towTrucks, userEnteredPoint);
+
 
     printMenu();
     cin >> option;
     cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     switch(option) {
       case 'y':
