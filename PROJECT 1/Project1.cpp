@@ -1,8 +1,25 @@
+/*
+* Project1.cpp
+* Written by:	  James Johnston
+* Date:         10/4/19
+* Version:		  1.0
+*/
+
+/**
+* Test program for TowTruck, and Point class.
+*
+* @Author:      James Johnston
+* @Version:     1.0
+* @Assignment:	Project 1
+*/
 #include <iostream>
 #include "TowTruck.h"
 using namespace std;
 
-
+/**
+ * Returns a point a user enters
+ * @return Returns the Point the user has entered
+ */
 Point getPointFromUser() {
   double x, y;
 
@@ -15,10 +32,18 @@ Point getPointFromUser() {
   return Point(x, y);
 }
 
+/**
+ * Prints out the standard menu
+ */
 void printMenu() {
   cout << "Add another? (y/n): ";
 }
 
+/**
+ * This function will add a point to the closest truck
+ * @param trucks, The truck array
+ * @param point, The point we are checking
+ */
 void addPointToClosestTowTruck(TowTruck* trucks, Point point) {
 
   TowTruck* closestTruck = NULL;
@@ -34,6 +59,11 @@ void addPointToClosestTowTruck(TowTruck* trucks, Point point) {
     closestTruck->driveToPoint(point);
 }
 
+
+/**
+ * Prints the summary of a truck array
+ * @param trucks, The truck array to print
+ */
 void printSummaryOfAllTrucks(TowTruck *trucks) {
   cout << endl << "===================== Summary =====================" << endl;
   for (int index = 0; index < TRUCK_DRIVER_COUNT; ++index) {
@@ -43,7 +73,10 @@ void printSummaryOfAllTrucks(TowTruck *trucks) {
 
 }
 
-
+/**
+ * Main method
+ * @return the value of success
+ */
 int main() {
   TowTruck towTrucks[TRUCK_DRIVER_COUNT];
 
@@ -78,11 +111,6 @@ int main() {
   }
 
   printSummaryOfAllTrucks(towTrucks);
-
-  //Point user = getPointFromUser();
-  //cout << p1.distanceTo(user) << endl;
-  //towTruckOne.printSummary();
-
 
   return 0;
 }
