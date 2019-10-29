@@ -67,7 +67,7 @@ public:
 	* @param	none
 	* @return	net payment of the player
 	*/
-	double calculateNetPayment();
+	void calculateNetPayment();
 
 	/**
 	* Generate pay stub for the player, including name, salary, agent name, and net
@@ -80,14 +80,18 @@ public:
 
 	bool nameEquals(std::string name) { return (name == this->name); }
 
-		void printBasic() {
+	void printBasic() {
 		printf("Name: %s | Salary: %.2f", name.c_str(), salary);
 	}
 
 	void printAgent() {
-		std::cout << "Current Agent: ";
+		std::cout << "[ Current Agent: ";
 		myAgent->printBasic();
-		std::cout << std::endl;
+		std::cout << " ]" << std::endl;
+	}
+
+	void setSalary(double salary) {
+		this->salary = salary;
 	}
 
 };

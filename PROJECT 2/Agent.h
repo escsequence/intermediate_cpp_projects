@@ -1,6 +1,9 @@
 #ifndef AGENT_H
 #define AGENT_H
 #include <iostream>
+#include "Constants.h"
+
+
 /**
 * Agent.h
 * Written by:
@@ -36,11 +39,14 @@ public:
 	}
 
 	void printFull() {
-		printf(	"Name: %s | Stipend Ratio: %.2f | Income: $%.2f",
+		printf(	"Name: %s | Stipend Ratio: %.2f | Income: $%.2f\n",
 						name.c_str(),
 						stipendRatio,
 						income);
 	}
+
+	double getStipendRatio();
+
 	/**
 	* Add payment to an agent
 	*
