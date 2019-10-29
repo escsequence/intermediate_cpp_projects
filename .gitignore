@@ -1,4 +1,6 @@
 *.o
 *.zip
 *.pdf
-
+*.exe
+*.DS_Store
+*.bfl

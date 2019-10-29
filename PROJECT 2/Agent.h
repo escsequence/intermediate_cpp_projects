@@ -56,5 +56,7 @@ public:
 	* @return	none
 	*/
 	void	generatePayStub();
+
+	bool nameEquals(std::string name) { return (name == this->name); }
 };
 #endif

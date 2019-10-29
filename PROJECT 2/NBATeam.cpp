@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <limits>
 using namespace std;
 /*
 * NBATeam.cpp
@@ -6,11 +7,13 @@ using namespace std;
 * Written for: project 2
 * Created on:
 */
-const int AGENT_COUNT = 6;
-const int PLAYER_COUNT = 15;
+const int AGENT_COUNT = 1;
+const int PLAYER_COUNT = 1;
 void generatePayStub(Agent[], int, Player[], int);
 
 int getMenuInputChoice();
+int getPlayerChoice();
+int getAgentChoice();
 
 Agent* generateAgents();
 Agent getAgentInformation();
@@ -21,6 +24,9 @@ Player getPlayerInformation();
 
 string getStringFromUser(string);
 double getValueFromUser(string);
+
+void updateAgentForPlayer(Player*, Agent*);
+void displayMenu();
 
 
 /**
@@ -34,21 +40,15 @@ int main()
 	//Create files for 15 players, associate agent with the player
 	Player* myPlayers = generatePlayers(myAgents);
 
-
-	//Display a menu and allow one to input the choice
-	cout << "--------------------- NBA TEAM MANAGER ---------------------" << endl;
-	cout << "1" << "\t-\t" << "Change agent for player" << endl;
-	cout << "2" << "\t-\t" << "Change salary for player" << endl;
-	cout << "3" << "\t-\t" << "Generate paystub for all players and all agents" << endl;
-	cout << "4" << "\t-\t" << "Display agents and players" << endl;
-	cout << "5" << "\t-\t" << "Quit" << endl;
-	cout << "------------------------------------------------------------" << endl;
-
 	bool menuIsOpen = true;
 	while(menuIsOpen) {
+		//Display a menu and allow one to input the choice
+		displayMenu();
+		
+		// Get the input 
 		switch(getMenuInputChoice()) {
 			case 1:
-				
+				updateAgentForPlayer(myPlayers, myAgents);	
 				break;
 			case 2:
 				break;
@@ -74,6 +74,29 @@ int main()
 
 }
 
+void displayMenu() {
+	cout << "--------------------- NBA TEAM MANAGER ---------------------" << endl;
+	cout << "1" << "\t-\t" << "Change agent for player" << endl;
+	cout << "2" << "\t-\t" << "Change salary for player" << endl;
+	cout << "3" << "\t-\t" << "Generate paystub for all players and all agents" << endl;
+	cout << "4" << "\t-\t" << "Display agents and players" << endl;
+	cout << "5" << "\t-\t" << "Quit" << endl;
+	cout << "------------------------------------------------------------" << endl;
+}
+
+void updateAgentForPlayer(Player *myPlayers, Agent *myAgents) {
+	// Get the player we want to change
+	Player *selectedPlayer = &myPlayers[getPlayerChoice()];
+
+	selectedPlayer->printAgent();
+
+	// Get the agent we want to update with
+	Agent *selectedAgent = &myAgents[getAgentChoice()];
+
+	// Update the selected player with the agent
+	selectedPlayer->setAgent(selectedAgent);
+}
+
 int getMenuInputChoice() {
 	int choice = -1;
 	while(choice == -1) {
@@ -89,10 +112,25 @@ int getMenuInputChoice() {
 	return choice;
 }
 
+int getPlayerChoice() {
+	int choice = -1;
+	while(choice == -1) {
+		cout << "Select a Player: ";
+		cin >> choice;
+		if (cin.fail() || choice <= 0 || choice > PLAYER_COUNT) {
+			cout << "Invalid player, please try again." << endl;
+			cin.clear();
+			choice = -1;
+		}
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+	return (choice-1);
+}
+
 int getAgentChoice() {
 	int choice = -1;
 	while(choice == -1) {
-		cout << "Select an agent: ";
+		cout << "Select an Agent: ";
 		cin >> choice;
 		if (cin.fail() || choice <= 0 || choice > AGENT_COUNT) {
 			cout << "Invalid agent, please try again." << endl;
@@ -101,7 +139,7 @@ int getAgentChoice() {
 		}
 		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-	return choice;
+	return (choice-1);
 }
 
 Agent getAgentInformation() {

@@ -78,6 +78,18 @@ public:
 	*/
 	void generatePayStub();
 
+	bool nameEquals(std::string name) { return (name == this->name); }
+
+		void printBasic() {
+		printf("Name: %s | Salary: %.2f", name.c_str(), salary);
+	}
+
+	void printAgent() {
+		std::cout << "Current Agent: ";
+		myAgent->printBasic();
+		std::cout << std::endl;
+	}
+
 };
 
 #endif
