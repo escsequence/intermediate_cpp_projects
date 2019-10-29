@@ -28,7 +28,7 @@ Agent getAgentInformation();
 void displayAgentInformation();
 
 Player* generatePlayers(Agent*);
-Player getPlayerInformation();
+Player getPlayerInformation(Agent*);
 
 string getStringFromUser(string);
 double getValueFromUser(string);
