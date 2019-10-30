@@ -78,6 +78,14 @@ public:
 	*/
 	void generatePayStub();
 
+	/**
+	 * Prints out an invalid message
+	 *
+	 * @param none
+	 * @return none
+	 */
+	void displayInvalidInput();
+
 	bool nameEquals(std::string name) { return (name == this->name); }
 
 	void printBasic() {

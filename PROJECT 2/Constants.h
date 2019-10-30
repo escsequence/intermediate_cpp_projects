@@ -7,7 +7,7 @@ const int PLAYER_COUNT = 1;
 const double MIN_STIPEND_RATIO = 1;
 const double MAX_STIPEND_RATIO = 5;
 
-
+const int INVALID_CHOICE_SELECTION = -1;
 
 
 #endif
