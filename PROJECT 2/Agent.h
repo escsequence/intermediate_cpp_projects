@@ -1,15 +1,16 @@
+/**
+* Agent.h
+* Written by:			James Johnston
+* Written for:		CS222 Project 2
+* Created on:			10/29/19
+*/
+
 #ifndef AGENT_H
 #define AGENT_H
 #include <iostream>
 #include "Constants.h"
 
 
-/**
-* Agent.h
-* Written by:
-* Written for:		CS222 Project 2
-* Created on:
-*/
 /**
 * Agent class definition
 */
@@ -25,26 +26,44 @@ private:
 	//Constructor and getters/setters
 public:
 
-	Agent() {
+	/**
+	 * Default Constructor
+	 *
+	 * @param 	none
+	 * @return	Agent obj
+	 */
+	Agent(){}
 
-	}
+	/**
+	 * Overloading Constructor
+	 *
+	 * @param 	string,		Name
+	 * @param		double,		Stipend Ratio
+	 * @return	Agent obj
+	 */
+	Agent(std::string, double);
 
-	Agent(std::string name, double stipendRatio) {
-		this->name = name;
-		this->stipendRatio = stipendRatio;
-	}
+	/**
+	 * Prints out basic information about the Agent.
+	 *
+	 * @param 	none
+	 * @return 	none
+	 */
+	void printBasic();
 
-	void printBasic() {
-		printf("Name: %s | Stipend Ratio: %.2f", name.c_str(), stipendRatio);
-	}
+	/**
+	 * Prints out a full length information about the Agent.
+	 *
+	 * @param 	none
+	 * @return 	none
+	 */
+	void printFull();
 
-	void printFull() {
-		printf(	"Name: %s | Stipend Ratio: %.2f | Income: $%.2f\n",
-						name.c_str(),
-						stipendRatio,
-						income);
-	}
-
+	/**
+	 * Returns the Stipend value
+	 *
+	 * @return double,	Stipend ratio value
+	 */
 	double getStipendRatio();
 
 	/**
@@ -63,6 +82,13 @@ public:
 	*/
 	void	generatePayStub();
 
-	bool nameEquals(std::string name) { return (name == this->name); }
+	/**
+	 * Returns a flag if the name equals a string value.
+	 *
+	 * @param string,		Value to check if the name equals
+	 * @return bool,		Flag if the value equals the string
+	 */
+	bool nameEquals(std::string);
+
 };
 #endif

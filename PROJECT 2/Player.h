@@ -1,13 +1,14 @@
+/**
+* Player.h
+* Written by:		James Johnston
+* Written for:	CS222 Project 2
+* Created on:		10/29/19
+*/
+
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "Agent.h"
 
-/*
-* Player.h
-* Written by:
-* Written for:	COMPSCI 222 Project 2
-* Created on:
-*/
 
 /**
 * Player class definition
@@ -17,23 +18,32 @@ class Player
 {
 //Data members
 private:
-	std::string	name;
+	std::string	name;		// name of player
 	double		salary;		//Salary of the player in million $
 	Agent		*myAgent;	//Pointer to the agent of this player, this makes sure
 							//multiple players can poin to a same agent
 //Member functions
 public:
 
-	Player() {
-
-	}
-
-	Player(std::string name, double salary, Agent* myAgent) {
-		this->name = name;
-		this->salary = salary;
-		this->myAgent = myAgent;
-	}
 	//Constructor, setters and getters
+	/**
+	 * Default Constructor
+	 *
+	 * @param 	none
+	 * @return	Player obj
+	 */
+	Player(){}
+
+	/**
+	 * Overloading Constructor
+	 *
+	 * @param 	string,		Name
+	 * @param		double,		Salary
+	 * @param		Agent*,		Agent to link up withn
+	 * @return	Player obj
+	 */
+	Player(std::string, double, Agent*);
+
 	/**
 	* Setter for Agent, pass the pointer of the agent so that different player
 	* can operate (e.g add income) on the same agent
@@ -79,28 +89,34 @@ public:
 	void generatePayStub();
 
 	/**
-	 * Prints out an invalid message
+	 * Returns a flag if the name equals a string value.
 	 *
-	 * @param none
-	 * @return none
+	 * @param string,		Value to check if the name equals
+	 * @return bool,		Flag if the value equals the string
 	 */
-	void displayInvalidInput();
+	bool nameEquals(std::string);
 
-	bool nameEquals(std::string name) { return (name == this->name); }
+	/**
+	 * Prints out basic information about the Player.
+	 *
+	 * @param 	none
+	 * @return 	none
+	 */
+	void printBasic();
 
-	void printBasic() {
-		printf("Name: %s | Salary: %.2f", name.c_str(), salary);
-	}
+	/**
+	 * Prints out a full length information about the Player's Agent.
+	 *
+	 * @param 	none
+	 * @return 	none
+	 */
+	void printAgent();
 
-	void printAgent() {
-		std::cout << "[ Current Agent: ";
-		myAgent->printBasic();
-		std::cout << " ]" << std::endl;
-	}
-
-	void setSalary(double salary) {
-		this->salary = salary;
-	}
+	/**
+	 * Set the salary
+	 * @param double, New salary
+	 */
+	void setSalary(double);
 
 };
 

@@ -1,10 +1,10 @@
-#include "Functions.h"
-/*
+/**
 * NBATeam.cpp
 * Written by:			James Johnston
-* Written for: 		Project 2
+* Written for: 		CS222 Project 2 (Runner app)
 * Created on:			10/29/19
 */
+#include "Functions.h"
 
 /**
 * Program for managing a NBA team
@@ -141,6 +141,7 @@ Player getPlayerInformation(Agent* myAgents) {
 	return Player(getStringFromUser("Name"),
 								getValueFromUser("Salary"),
 								getAgentFromUser(myAgents));
+
 }
 
 /**

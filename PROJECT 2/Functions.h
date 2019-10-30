@@ -1,3 +1,10 @@
+/**
+* Functions.h
+* Written by:			James Johnston
+* Written for:		CS222 Project 2
+* Created on:			10/29/19
+*/
+
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
@@ -137,7 +144,7 @@ Player getPlayerInformation(Agent*);
  * @param 	Agent*,		The current Agent array to display first.
  * @return	Agent*,   The agent the user selected.
  */
-Agent* getAgentFromUser(Agent *myAgents)
+Agent* getAgentFromUser(Agent *myAgents);
 
 /**
  * Returns a string based on an input from the user.
@@ -191,5 +198,13 @@ void displayMenu();
  * @return bool,	Flag if value is within bounds.
  */
 bool valueWithin(double, double, double);
+
+/**
+ * Prints out an invalid message
+ *
+ * @param none
+ * @return none
+ */
+void displayInvalidInput();
 
 #endif
